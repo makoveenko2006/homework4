@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  collatz:
+    build: .
+    container_name: collatz_calculator
+    stdin_open: true
+    tty: true
+    # Використовуємо всі доступні ядра хоста
+    cpuset: "0-${NCPUS:-7}"  # Налаштовується автоматично
+    # Обмеження пам'яті (опціонально)
+    mem_limit: 2g
+    # Видаляти контейнер після завершення
+    restart: "no"
